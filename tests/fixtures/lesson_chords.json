@@ -1,0 +1,163 @@
+[
+  {
+    "id": "shell-major7", "category": "control", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 1}, "pdf_page": 1, "pdf_position": "row 1, first chord",
+    "notes": [48, 52, 59], "expected_symbol": "Cmaj7", "expected_root": 0, "allowed_types": ["major7"],
+    "reason": "Root, third and major seventh; omitted fifth is handled correctly."
+  },
+  {
+    "id": "shell-minor7", "category": "control", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 9}, "pdf_page": 1, "pdf_position": "row 3, first chord",
+    "notes": [48, 51, 58], "expected_symbol": "Cm7", "expected_root": 0, "allowed_types": ["minor7"],
+    "reason": "Root, minor third and minor seventh."
+  },
+  {
+    "id": "shell-dominant7", "category": "control", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 17}, "pdf_page": 1, "pdf_position": "row 5, first chord",
+    "notes": [48, 52, 58], "expected_symbol": "C7", "expected_root": 0, "allowed_types": ["dominant7"],
+    "reason": "Root, major third and minor seventh."
+  },
+  {
+    "id": "cluster-major7-first", "category": "control", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/clusters/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 1}, "pdf_page": 1, "pdf_position": "row 1, first chord",
+    "notes": [52, 59, 60], "expected_symbol": "Cmaj7/E", "expected_root": 0, "allowed_types": ["major7"],
+    "reason": "The same major-seventh shell survives inversion and a semitone cluster."
+  },
+  {
+    "id": "hinge-d-minor", "category": "control", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/genius-chord-warmups/the-hinge/01-pdf-worksheet.musicxml",
+    "location": {"measure": 1}, "pdf_page": 1, "pdf_position": "C Major exercise 1, first chord",
+    "notes": [50, 53, 60, 62, 69], "expected_symbol": "Dm7", "expected_root": 2, "allowed_types": ["minor7"],
+    "reason": "A complete minor seventh across both hands, with octave doubling."
+  },
+  {
+    "id": "rootless-major9-three", "category": "capability_gap", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 1}, "pdf_page": 1, "pdf_position": "row 1, 3-Note, first chord",
+    "notes": [52, 59, 62], "expected_symbol": "Cmaj9 (rootless)", "expected_root": 0, "allowed_types": ["major9"],
+    "reason": "E-B-D contains the third, seventh and ninth. The missing-root prefilter excludes C despite the existing major9 scorer accepting it."
+  },
+  {
+    "id": "rootless-dominant9-three", "category": "capability_gap", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 15}, "pdf_page": 1, "pdf_position": "row 5, 3-Note, first chord",
+    "notes": [52, 58, 62], "expected_symbol": "C9 (rootless)", "expected_root": 0, "allowed_types": ["dominant9"],
+    "reason": "E-Bb-D is visible in the PDF. The OMR at this location is corrupt; the corrected PDF voicing is also rejected by the missing-root prefilter."
+  },
+  {
+    "id": "rootless-sharp9-three", "category": "capability_gap", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 21}, "pdf_page": 1, "pdf_position": "row 6, third chord",
+    "notes": [52, 58, 63], "expected_symbol": "C7#9 (rootless)", "expected_root": 0, "allowed_types": ["dominant7#9", "altered"],
+    "reason": "E-Bb-D# supplies both guide tones and #9; MusicXML drops the entire chord."
+  },
+  {
+    "id": "rootless-flat13-three", "category": "capability_gap", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 22}, "pdf_page": 1, "pdf_position": "row 6, fourth chord",
+    "notes": [58, 64, 68], "expected_symbol": "C7b13 (rootless)", "expected_root": 0, "allowed_types": ["dominant7b13", "dominant7#5", "augmented7", "altered"],
+    "reason": "Bb-E-Ab supplies seventh, third and b13; OMR retains only Ab."
+  },
+  {
+    "id": "major13-dropped-third", "category": "input_corruption", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 2}, "pdf_page": 1, "pdf_position": "row 1, 3-Note, second chord",
+    "notes": [59, 64, 69], "expected_symbol": "Cmaj13 (rootless)", "expected_root": 0, "allowed_types": ["major13"],
+    "reason": "PDF has B3-E4-A4. The OMR/MIDI drops E4, leaving a two-note fragment. The corrected set also has a valid quartal interpretation."
+  },
+  {
+    "id": "major13-dropped-thirteenth", "category": "input_corruption", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 3}, "pdf_page": 1, "pdf_position": "row 1, 4-Note, first chord",
+    "notes": [52, 57, 59, 62], "expected_symbol": "Cmaj13 (rootless)", "expected_root": 0, "allowed_types": ["major13"],
+    "reason": "PDF has E3-A3-B3-D4. OMR drops A3, turning this into the same set as the preceding major9 example."
+  },
+  {
+    "id": "six-nine-dropped-two-notes", "category": "input_corruption", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 5}, "pdf_page": 1, "pdf_position": "row 2, 3-Note, first chord",
+    "notes": [52, 57, 62], "expected_symbol": "C6/9 (rootless)", "expected_root": 0, "allowed_types": ["6/9"],
+    "reason": "PDF has E3-A3-D4. OMR keeps only D4. Corrected notes form a literal stack of fourths and do not determine a unique root."
+  },
+  {
+    "id": "sixth-shell-major", "category": "ambiguity", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 7}, "pdf_page": 1, "pdf_position": "row 2, mover, initial notes",
+    "notes": [48, 52, 57], "expected_symbol": "C6 (no fifth)", "expected_root": 0, "allowed_types": ["major6"],
+    "reason": "C-E-A is also a complete A minor triad. A single-set detector cannot prove the worksheet's C root."
+  },
+  {
+    "id": "sixth-shell-minor", "category": "ambiguity", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 13}, "pdf_page": 1, "pdf_position": "row 4, first chord",
+    "notes": [48, 51, 57], "expected_symbol": "Cm6 (no fifth)", "expected_root": 0, "allowed_types": ["minor6"],
+    "reason": "C-Eb-A is also a complete A diminished triad and a fifthless C diminished seventh."
+  },
+  {
+    "id": "diminished-shell", "category": "ambiguity", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 21}, "pdf_page": 1, "pdf_position": "row 6, first chord",
+    "notes": [36, 45, 51], "expected_symbol": "Cdim7 (no fifth)", "expected_root": 0, "allowed_types": ["diminished7"],
+    "reason": "The exact same pitch classes as the minor-sixth shell are printed with a different chord name."
+  },
+  {
+    "id": "half-diminished-shell", "category": "insufficient_evidence", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-shell/03-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 25}, "pdf_page": 1, "pdf_position": "row 7, first chord",
+    "notes": [48, 51, 58], "expected_symbol": "Cm7b5 (no fifth)", "expected_root": 0, "allowed_types": ["half-diminished7", "minor7b5"],
+    "reason": "The diminished fifth is absent. These notes are identical to the worksheet's ordinary Cm7 shell."
+  },
+  {
+    "id": "major-half-shell", "category": "insufficient_evidence", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/root-half-shell/01-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 1}, "pdf_page": 1, "pdf_position": "row 1, first chord",
+    "notes": [48, 59], "expected_symbol": "Cmaj7 (root + seventh)", "expected_root": 0, "allowed_types": ["major7"],
+    "reason": "C-B alone cannot determine major versus minor-major chord quality. A blank chord is reasonable."
+  },
+  {
+    "id": "fourths-missing-third", "category": "insufficient_evidence", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/fourths/01-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 1}, "pdf_page": 1, "pdf_position": "row 1, first chord",
+    "notes": [48, 54, 59], "expected_symbol": "Cmaj7#11 (no third)", "expected_root": 0, "allowed_types": ["major7#11"],
+    "reason": "C-F#-B has no third; the major quality comes from the surrounding lesson context."
+  },
+  {
+    "id": "flat9-three", "category": "ambiguity", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 19}, "pdf_page": 1, "pdf_position": "row 6, first chord",
+    "notes": [52, 58, 61], "expected_symbol": "C7b9 (rootless)", "expected_root": 0, "allowed_types": ["dominant7b9", "altered"],
+    "reason": "E-Bb-Db is also a complete Bb diminished triad. OMR drops Bb."
+  },
+  {
+    "id": "sharp11-three", "category": "ambiguity", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 20}, "pdf_page": 1, "pdf_position": "row 6, second chord",
+    "notes": [58, 64, 66], "expected_symbol": "C7#11 (rootless)", "expected_root": 0, "allowed_types": ["dominant7#11"],
+    "reason": "Bb-E-F# is also a fifthless Gb7 shell; choosing a root needs context."
+  },
+  {
+    "id": "altered-four", "category": "ambiguity", "evidence": "pdf_transcription",
+    "musicxml": "omr/musicxml/jazz-piano-basics-vol-2-left-hand-voicings/shell-pretty/02-shell-pretty-lesson-sheet.musicxml",
+    "location": {"part": "P1", "measure": 24}, "pdf_page": 1, "pdf_position": "row 7, second chord",
+    "notes": [52, 58, 63, 68], "expected_symbol": "C7#9b13 (rootless)", "expected_root": 0, "allowed_types": ["dominant7#9b13", "dominant7#5#9", "altered"],
+    "reason": "The same four notes also fit fifthless Emaj7#11. The analyzer's heuristic score is not a probability of the worksheet's interpretation."
+  },
+  {
+    "id": "mu-tonic-substitution", "category": "harmonic_substitution", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/genius-chord-warmups/the-mu-2-5-1/01-pdf-worksheet.musicxml",
+    "location": {"measure": 1}, "pdf_page": 1, "pdf_position": "C Major, first chord",
+    "notes": [48, 57, 60, 64], "expected_symbol": "Cmaj7 (printed harmony)", "expected_root": 0, "allowed_types": ["major7"],
+    "reason": "The PDF itself voices C-A-C-E, a C6 shell, under a Cmaj7 symbol. The absent B is not a detector error or an OMR error."
+  },
+  {
+    "id": "autumn-quartal-context", "category": "ambiguity", "evidence": "literal_xml",
+    "musicxml": "omr/musicxml/magic-voicing-system/gps-autumn-leaves/02-example-voicings-pdf.musicxml",
+    "location": {"measure": 1}, "pdf_page": 1, "pdf_position": "first system, first chord",
+    "notes": [53, 58, 63, 67, 72], "expected_symbol": "Cm7 (printed harmony), voiced Cm11/F", "expected_root": 0, "allowed_types": ["minor7", "minor11"],
+    "reason": "F-Bb-Eb-G-C also forms an exact F9sus4 chord. The printed Cm7 indicates the harmonic role."
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "ChordDetector",
+  "version": "3.1.0",
+  "description": "Long Kelvin's MIT chord detector, adapted for the Core2",
+  "build": {
+    "srcFilter": ["+<*>", "-<NoteUtils.cpp>", "-<ChordFormatter.cpp>"]
+  }
+}
